@@ -107,6 +107,7 @@ const zoekenDan = searchInput.addEventListener('keyup', (e) => {
         return movie.title.toLowerCase().includes(searchString);
     });
     console.log(searchMovies);
+    addMoviesToDom(searchMovies);
 });
 
 
