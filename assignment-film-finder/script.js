@@ -39,30 +39,54 @@ const addMoviesToDom = (movies) => {
     });
 };
 
-
 addMoviesToDom(movies);
 
+//Remove films 
+const removeMoviesFromDom = () => {
+    while (movieList.hasChildNodes()) {
+        movieList.removeChild(movieList.firstChild);
+    };
+};
+
 //Filtermovies zoeken op woord in titel
-const filterMovies = (wordInMovie) => {
+function filterMovies(wordInMovie) {
+    removeMoviesFromDom();
     return movies.filter((item) => {
         return item.title.includes(wordInMovie);
-
     });
 };
 
-console.log(filterMovies("Batman"));
-
+//Filterlatest movies
+const filterLatestMovies = () => {
+    removeMoviesFromDom();
+    return movies.filter((item) => {
+        return item.year >= 2014;
+    });
+};
 
 // Radiobutton on change event 
 const handleOnChangeEvent = (event) => {
     console.log(event.target.value)
     switch (event.target.value) {
-        case "princess-films":
+        case "allmovies":
+            addMoviesToDom(movies);
+            break;
+        case "latestmovies":
+            addMoviesToDom(filterLatestMovies());
+            break;
+        case "princessmovies":
             addMoviesToDom(filterMovies("Princess"));
             break;
-        case "batman":
+        case "batmanmovies":
             addMoviesToDom(filterMovies("Batman"));
             break;
+        case "xmenmovies":
+            addMoviesToDom(filterMovies("X-Men"));
+            break;
+        case "avengermovies":
+            addMoviesToDom(filterMovies("Avengers"));
+            break;
+
     };
 
 };
@@ -72,5 +96,19 @@ const radioButton = document.getElementsByName("menu-filter");
 radioButton.forEach(radioButton => {
     radioButton.addEventListener('change', handleOnChangeEvent)
 });
+
+//Zoekbalk werkend maken
+const searchInput = document.getElementById("zoekbalk");
+
+const zoekenDan = searchInput.addEventListener('keyup', (e) => {
+    const searchString = e.target.value.toLowerCase();
+
+    const searchMovies = movies.filter((movie) => {
+        return movie.title.toLowerCase().includes(searchString);
+    });
+    console.log(searchMovies);
+});
+
+
 
 
