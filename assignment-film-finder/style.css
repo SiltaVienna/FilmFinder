@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+}
+
+/* TEKST OPMAAK */
+
+body {
+    color: #fff;
+    background: #000;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+h1 { 
+    color: #fff;
+    text-transform: uppercase;
+
+}
+
+.banner {
+    text-align: center;
+    padding: 40px;
+}
+
+/* LAYOUT */
+
+.menu {
+    background-color: rgb(255, 166, 0);
+    height: auto;
+}
+
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+input {
+    margin: 0 10px 0 30px;
+}
+
+li {
+    display: inline;
+    margin: 15px;
+}
+
+/* OPMAAK SEARCH BAR */
+
+.zoekbalk {
+    border-radius: 10px;
+    border-style: hidden;
+    height: 20px;
+    width: 200px;
+    position: absolute;
+    right:0;
+}
+
+/* FOOTER */
+
+footer {
+    height: auto;
+    position: relative;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    font-size: small;
+    background-color: rgb(255, 166, 0);
+    display: flex;
+    justify-content: center;
+    color: #000;
+}
