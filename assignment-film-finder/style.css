@@ -8,6 +8,7 @@ body {
     color: #fff;
     background: #000;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    
 }
 
 h1 { 
@@ -29,9 +30,9 @@ img {
     width: 100%;
     height: 350px;
     margin: 20px;
+    
 }
  
-
 /* LAYOUT */
 
 .menu {

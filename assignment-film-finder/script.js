@@ -1,26 +1,16 @@
 
 const movieList = document.getElementById("movies-overzicht");
 
-//Functie films toevoegen
-// const addMoviesToDom = movies.map((item) => {
-
-//     const newA = document.createElement("a");
-//     const newLi = document.createElement("li");
-//     const newImg = document.createElement("img");
-
-//     newImg.src = item.poster;
-//     newA.href = "https://www.imdb.com/title/" + movies.imdbID;
-//     newLi.appendChild(newA);
-//     newA.appendChild(newImg);
-//     return newLi;
-// });
-
-// addMoviesToDom.forEach((newLi) => {
-//     movieList.appendChild(newLi);
-// });
+//Remove films 
+const removeMoviesFromDom = () => {
+    while (movieList.hasChildNodes()) {
+        movieList.removeChild(movieList.firstChild);
+    };
+};
 
 //Bovenstaande functie anders geschreven omdat ik addMoviesToDom nodig heb als functie
 const addMoviesToDom = (movies) => {
+    removeMoviesFromDom();
     const moviesToList = movies.map((item) => {
 
         const newA = document.createElement("a");
@@ -40,13 +30,6 @@ const addMoviesToDom = (movies) => {
 };
 
 addMoviesToDom(movies);
-
-//Remove films 
-const removeMoviesFromDom = () => {
-    while (movieList.hasChildNodes()) {
-        movieList.removeChild(movieList.firstChild);
-    };
-};
 
 //Filtermovies zoeken op woord in titel
 function filterMovies(wordInMovie) {
@@ -68,9 +51,6 @@ const filterLatestMovies = () => {
 const handleOnChangeEvent = (event) => {
     console.log(event.target.value)
     switch (event.target.value) {
-        case "allmovies":
-            addMoviesToDom(movies);
-            break;
         case "latestmovies":
             addMoviesToDom(filterLatestMovies());
             break;
@@ -86,9 +66,10 @@ const handleOnChangeEvent = (event) => {
         case "avengermovies":
             addMoviesToDom(filterMovies("Avengers"));
             break;
-
+        case "allmovies":
+            addMoviesToDom(movies);
+            break;
     };
-
 };
 
 //Aanroepen van change event functie met addeventlistener, moet buiten de functie
@@ -98,18 +79,36 @@ radioButton.forEach(radioButton => {
 });
 
 //Zoekbalk werkend maken
-const searchInput = document.getElementById("zoekbalk");
+const searchBar = document.getElementById("zoekbalk");
 
-const zoekenDan = searchInput.addEventListener('keyup', (e) => {
+const searchInput = searchBar.addEventListener('keyup', (e) => {
+    removeMoviesFromDom();
     const searchString = e.target.value.toLowerCase();
 
     const searchMovies = movies.filter((movie) => {
         return movie.title.toLowerCase().includes(searchString);
     });
-    console.log(searchMovies);
+    console.log(searchMovies); 
     addMoviesToDom(searchMovies);
 });
 
 
 
 
+//Functie films toevoegen
+// const addMoviesToDom = movies.map((item) => {
+
+//     const newA = document.createElement("a");
+//     const newLi = document.createElement("li");
+//     const newImg = document.createElement("img");
+
+//     newImg.src = item.poster;
+//     newA.href = "https://www.imdb.com/title/" + movies.imdbID;
+//     newLi.appendChild(newA);
+//     newA.appendChild(newImg);
+//     return newLi;
+// });
+
+// addMoviesToDom.forEach((newLi) => {
+//     movieList.appendChild(newLi);
+// });
